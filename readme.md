@@ -1,15 +1,15 @@
-## Laravel 4.2 - Starter Kit with Bootstrap 3.2
+## Laravel 4.2 - Starter Kit with Bootstrap 3.2.0 CDN
 
 Based on [Laravel 4 Starter Kit](https://github.com/brunogaspar/laravel4-starter-kit)
 
-I just updated to use laravel 4.2 and Bootstrap 3.2.
+I just updated to use laravel 4.2 and Bootstrap 3.2.0 CDN.
 All the functionality is the same.
 
 -----
 
 ## Included goodies
 
-* Twitter Bootstrap 3.2.0
+* Twitter Bootstrap 3.2.0 CDN
 * jQuery 1.10.2
 * Custom CLI Installer
 * Custom Error Pages:
