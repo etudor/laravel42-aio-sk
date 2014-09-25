@@ -1,19 +1,13 @@
-# Please don't send any PR's as i'm not accepting them at this moment!
+## Laravel 4.2 - Starter Kit with Bootstrap 3.2
 
----
-
-## Laravel 4 - Starter Kit
-
-This is a Laravel 4 Starter Kit and it will help you getting started with Laravel 4.
-
-It includes examples on how to use the framework itself and how to use some
-packages, like the awesome [Sentry 2](https://github.com/cartalyst/sentry) package.
+Based on [Laravel 4 Starter Kit](https://github.com/brunogaspar/laravel4-starter-kit)
+I just updated to use laravel 4.2 and Bootstrap 3.2. All the functionality is the same.
 
 -----
 
 ## Included goodies
 
-* Twitter Bootstrap 2.3.2
+* Twitter Bootstrap 3.2.0
 * jQuery 1.10.2
 * Custom CLI Installer
 * Custom Error Pages:
@@ -46,11 +40,11 @@ packages, like the awesome [Sentry 2](https://github.com/cartalyst/sentry) packa
 ### 1) Downloading
 #### 1.1) Clone the Repository
 
-	git clone http://github.com/brunogaspar/laravel4-starter-kit your-folder
+	git clone 
 
 #### 1.2) Download the Repository
 
-	https://github.com/brunogaspar/laravel4-starter-kit/archive/master.zip
+	
 
 -----
 

@@ -10,12 +10,7 @@ class BlogController extends BaseController {
 	public function getIndex()
 	{
 		// Get all the blog posts
-		$posts = Post::with(array(
-			'author' => function($query)
-			{
-				$query->withTrashed();
-			},
-		))->orderBy('created_at', 'DESC')->paginate();
+		$posts = Post::with('author')->orderBy('created_at', 'DESC')->paginate();
 
 		// Show the page
 		return View::make('frontend/blog/index', compact('posts'));
@@ -31,13 +26,7 @@ class BlogController extends BaseController {
 	public function getView($slug)
 	{
 		// Get this blog post data
-		$post = Post::with(array(
-			'author' => function($query)
-			{
-				$query->withTrashed();
-			},
-			'comments',
-		))->where('slug', $slug)->first();
+		$post = Post::with(	'comments', 'author')->where('slug', $slug)->first();
 
 		// Check if the blog post exists
 		if (is_null($post))
@@ -48,12 +37,7 @@ class BlogController extends BaseController {
 		}
 
 		// Get this post comments
-		$comments = $post->comments()->with(array(
-			'author' => function($query)
-			{
-				$query->withTrashed();
-			},
-		))->orderBy('created_at', 'DESC')->get();
+		$comments = $post->comments()->with('author')->orderBy('created_at', 'DESC')->get();
 
 		// Show the page
 		return View::make('frontend/blog/view-post', compact('post', 'comments'));

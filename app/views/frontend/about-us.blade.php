@@ -9,6 +9,6 @@ About us ::
 {{-- Page content --}}
 @section('content')
 
-About us page.
-
+<h1>About us page</h1>
+<p>About us content.</p>
 @stop

@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => '127.0.0.1',
-			'database'  => 'laravel4_testing',
+			'database'  => 'starterkit',
 			'username'  => 'root',
-			'password'  => '',
+			'password'  => 'parola123',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

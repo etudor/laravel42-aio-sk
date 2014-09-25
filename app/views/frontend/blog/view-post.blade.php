@@ -26,8 +26,12 @@
 
 {{-- Page content --}}
 @section('content')
-<h3>{{ $post->title }}</h3>
-
+<h1>{{ $post->title }}</h1>
+<p>
+	<i class="icon-user"></i> by <span class="muted">{{ $post->author->first_name }}</span>
+	| <i class="icon-calendar"></i> {{ $post->created_at->diffForHumans() }}
+	| <i class="icon-comment"></i> <a href="{{ $post->url() }}#comments">{{ $post->comments()->count() }} Comments</a>
+</p>
 <p>{{ $post->content() }}</p>
 
 <div>
@@ -36,56 +40,46 @@
 
 <hr />
 
-<a id="comments"></a>
-<h4>{{ $comments->count() }} Comments</h4>
+<h4 id="comments">{{ $comments->count() }} Comments</h4>
 
 @if ($comments->count())
-@foreach ($comments as $comment)
-<div class="row">
-	<div class="span1">
-		<img class="thumbnail" src="{{ $comment->author->gravatar() }}" alt="">
-	</div>
-	<div class="span11">
+	@foreach ($comments as $comment)
 		<div class="row">
-			<div class="span11">
+			<div class="col-lg-1">
+				<img class="thumbnail" src="{{ $comment->author->gravatar() }}" alt="">
+			</div>
+			<div class="col-lg-11">
 				<span class="muted">{{ $comment->author->fullName() }}</span>
 				&bull;
 				<span title="{{ $comment->created_at }}">{{ $comment->created_at->diffForHumans() }}</span>
-
-				<hr />
-
+				<br />
 				{{ $comment->content() }}
 			</div>
 		</div>
-	</div>
-</div>
-<hr />
-@endforeach
+	@endforeach
 @else
 <hr />
 @endif
 
 @if ( ! Sentry::check())
-You need to be logged in to add comments.<br /><br />
-Click <a href="{{ route('signin') }}">here</a> to login into your account.
+	You need to be logged in to add comments.<br /><br />
+	Click <a href="{{ route('signin') }}">here</a> to login into your account.
 @else
-<h4>Add a Comment</h4>
-<form method="post" action="{{ route('view-post', $post->slug) }}">
-	<!-- CSRF Token -->
-	<input type="hidden" name="_token" value="{{ csrf_token() }}" />
+	<h3>Add a Comment</h3>
+	<form method="post" action="{{ route('view-post', $post->slug) }}">
+		<!-- CSRF Token -->
+		<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
-	<!-- Comment -->
-	<div class="control-group{{ $errors->first('comment', ' error') }}">
-		<textarea class="input-block-level" rows="4" name="comment" id="comment">{{ Input::old('comment') }}</textarea>
-		{{ $errors->first('comment', '<span class="help-inline">:message</span>') }}
-	</div>
-
-	<!-- Form actions -->
-	<div class="control-group">
-		<div class="controls">
-			<input type="submit" class="btn" id="submit" value="Submit" />
+		<!-- Comment -->
+		<div class="form-group{{ $errors->first('comment', ' error') }}">
+			<textarea class="form-control" rows="4" name="comment" id="comment">{{ Input::old('comment') }}</textarea>
+			{{ $errors->first('comment', '<span class="help-inline">:message</span>') }}
 		</div>
-	</div>
-</form>
+
+		<!-- Form actions -->
+		<div class="form-group">
+				<input type="submit" class="btn btn-primary" id="submit" value="Submit" />
+		</div>
+	</form>
 @endif
 @stop

@@ -19,12 +19,17 @@
 
 		<!-- CSS
 		================================================== -->
-		<link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+		<link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
 		<style>
 		@section('styles')
 		body {
 			padding: 10px 0;
+		}
+		.active {
+			background-color: #eee;
 		}
 		@show
 		</style>
@@ -46,49 +51,57 @@
 	<body>
 		<!-- Container -->
 		<div class="container">
-			<!-- Navbar -->
-			<div class="navbar navbar-inverse">
-				<div class="navbar-inner">
-					<div class="container">
-						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</a>
 
-						<div class="nav-collapse collapse">
-							<ul class="nav">
-								<li {{ (Request::is('/') ? 'class="active"' : '') }}><a href="{{ route('home') }}"><i class="icon-home icon-white"></i> Home</a></li>
-								<li {{ (Request::is('about-us') ? 'class="active"' : '') }}><a href="{{ URL::to('about-us') }}"><i class="icon-file icon-white"></i> About us</a></li>
-								<li {{ (Request::is('contact-us') ? 'class="active"' : '') }}><a href="{{ URL::to('contact-us') }}"><i class="icon-file icon-white"></i> Contact us</a></li>
-							</ul>
+			<nav class="navbar navbar-default" role="navigation">
+			  <div class="container-fluid">
+			    <!-- Brand and toggle get grouped for better mobile display -->
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+			      <a class="navbar-brand" href="{{ URL::route('home') }}">Home</a>
+			    </div>
 
-							<ul class="nav pull-right">
-								@if (Sentry::check())
+			    <!-- Collect the nav links, forms, and other content for toggling -->
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li {{ (Request::is('about-us') ? 'class="active"' : '') }}><a href="{{ URL::to('about-us') }}"><i class="icon-file icon-white"></i> About us</a></li>
+						<li {{ (Request::is('contact-us') ? 'class="active"' : '') }}><a href="{{ URL::to('contact-us') }}"><i class="icon-file icon-white"></i> Contact us</a></li>
+					</ul>
+			      <form class="navbar-form navbar-left" role="search">
+			        <div class="form-group">
+			          <input type="text" class="form-control" placeholder="Search">
+			        </div>
+			        <button type="submit" class="btn btn-default">Submit</button>
+			      </form>
+					<ul class="nav navbar-nav navbar-right">
+						@if (Sentry::check())
 
-								<li class="dropdown{{ (Request::is('account*') ? ' active' : '') }}">
-									<a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="{{ route('account') }}">
-										Welcome, {{ Sentry::getUser()->first_name }}
-										<b class="caret"></b>
-									</a>
-									<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-										@if(Sentry::getUser()->hasAccess('admin'))
-										<li><a href="{{ route('admin') }}"><i class="icon-cog"></i> Administration</a></li>
-										@endif
-										<li{{ (Request::is('account/profile') ? ' class="active"' : '') }}><a href="{{ route('profile') }}"><i class="icon-user"></i> Your profile</a></li>
-										<li class="divider"></li>
-										<li><a href="{{ route('logout') }}"><i class="icon-off"></i> Logout</a></li>
-									</ul>
-								</li>
-								@else
-								<li {{ (Request::is('auth/signin') ? 'class="active"' : '') }}><a href="{{ route('signin') }}">Sign in</a></li>
-								<li {{ (Request::is('auth/signup') ? 'class="active"' : '') }}><a href="{{ route('signup') }}">Sign up</a></li>
+						<li class="dropdown{{ (Request::is('account*') ? ' active' : '') }}">
+							<a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="{{ route('account') }}">
+								Welcome, {{ Sentry::getUser()->first_name }}
+								<b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+								@if(Sentry::getUser()->hasAccess('admin'))
+								<li><a href="{{ route('admin') }}"><i class="icon-cog"></i> Administration</a></li>
 								@endif
+								<li{{ (Request::is('account/profile') ? ' class="active"' : '') }}><a href="{{ route('profile') }}"><i class="icon-user"></i> Your profile</a></li>
+								<li class="divider"></li>
+								<li><a href="{{ route('logout') }}"><i class="icon-off"></i> Logout</a></li>
 							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
+						</li>
+						@else
+						<li {{ (Request::is('auth/signin') ? 'class="active"' : '') }}><a href="{{ route('signin') }}">Sign in</a></li>
+						<li {{ (Request::is('auth/signup') ? 'class="active"' : '') }}><a href="{{ route('signup') }}">Sign up</a></li>
+						@endif
+					</ul>
+			    </div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>
 
 			<!-- Notifications -->
 			@include('frontend/notifications')
@@ -107,6 +120,6 @@
 		<!-- Javascripts
 		================================================== -->
 		<script src="{{ asset('assets/js/jquery.1.10.2.min.js') }}"></script>
-		<script src="{{ asset('assets/js/bootstrap/bootstrap.min.js') }}"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	</body>
 </html>

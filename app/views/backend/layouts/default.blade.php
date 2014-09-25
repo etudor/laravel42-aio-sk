@@ -19,13 +19,12 @@
 
 		<!-- CSS
 		================================================== -->
-		<link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet">
-		<link href="{{ asset('assets/css/bootstrap-responsive.css') }}" rel="stylesheet">
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 
 		<style>
 		@section('styles')
 		body {
-			padding: 60px 0;
+			padding: 20px 0;
 		}
 		@show
 		</style>
@@ -47,38 +46,45 @@
 	<body>
 		<!-- Container -->
 		<div class="container">
-			<!-- Navbar -->
-			<div class="navbar navbar-inverse navbar-fixed-top">
-				<div class="navbar-inner">
-					<div class="container">
-						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</a>
-						<div class="nav-collapse collapse">
-							<ul class="nav">
-								<li{{ (Request::is('admin') ? ' class="active"' : '') }}><a href="{{ URL::to('admin') }}"><i class="icon-home icon-white"></i> Home</a></li>
-								<li{{ (Request::is('admin/blogs*') ? ' class="active"' : '') }}><a href="{{ URL::to('admin/blogs') }}"><i class="icon-list-alt icon-white"></i> Blogs</a></li>
-								<li class="dropdown{{ (Request::is('admin/users*|admin/groups*') ? ' active' : '') }}">
-									<a class="dropdown-toggle" data-toggle="dropdown" href="{{ URL::to('admin/users') }}">
-										<i class="icon-user icon-white"></i> Users <span class="caret"></span>
-									</a>
-									<ul class="dropdown-menu">
-										<li{{ (Request::is('admin/users*') ? ' class="active"' : '') }}><a href="{{ URL::to('admin/users') }}"><i class="icon-user"></i> Users</a></li>
-										<li{{ (Request::is('admin/groups*') ? ' class="active"' : '') }}><a href="{{ URL::to('admin/groups') }}"><i class="icon-user"></i> Groups</a></li>
-									</ul>
-								</li>
+
+		<!-- Navigation -->
+			<nav class="navbar navbar-default" role="navigation">
+			  <div class="container-fluid">
+			    <!-- Brand and toggle get grouped for better mobile display -->
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+			      <a class="navbar-brand" href="{{ URL::to('admin') }}">Admin</a>
+			    </div>
+
+			    <!-- Collect the nav links, forms, and other content for toggling -->
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li{{ (Request::is('admin') ? ' class="active"' : '') }}><a href="{{ URL::to('admin') }}"><i class="icon-home icon-white"></i> Home</a></li>
+						<li{{ (Request::is('admin/blogs*') ? ' class="active"' : '') }}><a href="{{ URL::to('admin/blogs') }}"><i class="icon-list-alt icon-white"></i> Blogs</a></li>
+						<li class="dropdown{{ (Request::is('admin/users*')||Request::is('admin/groups*')) ? ' active' : '' }}">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="{{ URL::to('admin/users') }}">
+								<i class="icon-user icon-white"></i> Users <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li{{ (Request::is('admin/users*') ? ' class="active"' : '') }}><a href="{{ URL::to('admin/users') }}"><i class="icon-user"></i> Users</a></li>
+								<li{{ (Request::is('admin/groups*') ? ' class="active"' : '') }}><a href="{{ URL::to('admin/groups') }}"><i class="icon-user"></i> Groups</a></li>
 							</ul>
-							<ul class="nav pull-right">
-								<li><a href="{{ URL::to('/') }}">View Homepage</a></li>
-								<li class="divider-vertical"></li>
-								<li><a href="{{ route('logout') }}">Logout</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="{{ URL::to('/') }}" target="_blank">View Homepage</a></li>
+						<li class="divider-vertical"></li>
+						<li><a href="{{ route('logout') }}">Logout</a></li>
+					</ul>
+			    </div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>
+		<!-- Navigation End -->
 
 			<!-- Notifications -->
 			@include('frontend/notifications')
@@ -90,6 +96,6 @@
 		<!-- Javascripts
 		================================================== -->
 		<script src="{{ asset('assets/js/jquery.1.10.2.min.js') }}"></script>
-		<script src="{{ asset('assets/js/bootstrap/bootstrap.min.js') }}"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	</body>
 </html>
