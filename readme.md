@@ -1,7 +1,9 @@
 ## Laravel 4.2 - Starter Kit with Bootstrap 3.2
 
 Based on [Laravel 4 Starter Kit](https://github.com/brunogaspar/laravel4-starter-kit)
-I just updated to use laravel 4.2 and Bootstrap 3.2. All the functionality is the same.
+
+I just updated to use laravel 4.2 and Bootstrap 3.2.
+All the functionality is the same.
 
 -----
 
@@ -44,7 +46,7 @@ I just updated to use laravel 4.2 and Bootstrap 3.2. All the functionality is th
 
 #### 1.2) Download the Repository
 
-	
+	https://github.com/etudor/laravel42-starter-kit/archive/master.zip
 
 -----
 
