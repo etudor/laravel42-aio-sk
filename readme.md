@@ -40,7 +40,7 @@ I just updated to use laravel 4.2 and Bootstrap 3.2. All the functionality is th
 ### 1) Downloading
 #### 1.1) Clone the Repository
 
-	git clone 
+	git clone https://github.com/etudor/laravel42-starter-kit.git
 
 #### 1.2) Download the Repository
 
